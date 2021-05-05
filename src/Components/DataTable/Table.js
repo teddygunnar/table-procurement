@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 import Data from "./Data/TableData";
 import Columns from "./Data/TableColumn";
+import AddData from "./Data/AddTableData";
+import AddColumns from "./Data/AddTableColumn";
 import CustomTableStyle from "./TableStyles/CustomTableStyle";
 import CustomRowBackColor from "./TableStyles/CustomRowBackColor";
+import AddCustomTableStyle from "./TableStyles/AddCustomTableStyle";
+import AddCustomRowBackColor from "./TableStyles/AddCustomRowBackColor";
 import { Checkbox, Button } from "@material-ui/core";
+import { TableHeader, Footer } from "../";
 import useStyles from "./styles";
 
 const Table = () => {
@@ -16,8 +21,13 @@ const Table = () => {
     setMainInfo((prevMainInfo) => !prevMainInfo);
   };
 
+  const checkBoxProps = {
+    color: "primary",
+  };
+
   return (
     <div>
+      <TableHeader />
       <div>
         <Button
           variant="contained"
@@ -47,23 +57,41 @@ const Table = () => {
           Additional Info
         </Button>
       </div>
-      {mainInfo && (
-        <>
+      {mainInfo ? (
+        <div>
           <DataTable
             columns={Columns}
             data={Data()}
             selectableRows
-            selectableRowsComponent={Checkbox}
+            selectableRowsComponent={Checkbox} // Pass the function only
+            selectableRowsComponentProps={checkBoxProps}
             noContextMenu={true}
             noHeader={true}
-            sortIcon
             selectableRowsHighlight
             customStyles={CustomTableStyle}
             conditionalRowStyles={CustomRowBackColor}
             pagination
             dense
           />
-        </>
+          <Footer />
+        </div>
+      ) : (
+        <div>
+          <DataTable
+            columns={AddColumns}
+            data={AddData()}
+            selectableRows
+            selectableRowsComponent={Checkbox} // Pass the function only
+            selectableRowsComponentProps={checkBoxProps}
+            noContextMenu={true}
+            noHeader={true}
+            selectableRowsHighlight
+            customStyles={AddCustomTableStyle}
+            conditionalRowStyles={AddCustomRowBackColor}
+            pagination
+          />
+          <Footer />
+        </div>
       )}
     </div>
   );
