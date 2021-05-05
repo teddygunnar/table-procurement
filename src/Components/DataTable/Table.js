@@ -28,35 +28,70 @@ const Table = () => {
   return (
     <div>
       <TableHeader />
-      <div>
-        <Button
-          variant="contained"
-          className={classes.changeButton}
-          style={{
-            backgroundColor: "#2975D9",
-            color: "white",
-            borderRadius: "10px 10px 0 0",
-            marginRight: 5,
-            fontSize: 12,
-          }}
-          onClick={switchMode}
-        >
-          Main Info
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.changeButton}
-          style={{
-            backgroundColor: "white",
-            color: "#3F63F5",
-            borderRadius: "10px 10px 0 0",
-            fontSize: 12,
-          }}
-          onClick={switchMode}
-        >
-          Additional Info
-        </Button>
-      </div>
+      {mainInfo ? (
+        <div>
+          <Button
+            variant="contained"
+            className={classes.changeButton}
+            disabled
+            style={{
+              backgroundColor: "#2975D9",
+              color: "white",
+              borderRadius: "10px 10px 0 0",
+              marginRight: 5,
+              fontSize: 12,
+            }}
+            onClick={switchMode}
+          >
+            Main Info
+          </Button>
+          <Button
+            variant="contained"
+            className={classes.changeButton}
+            style={{
+              backgroundColor: "white",
+              color: "#3F63F5",
+              borderRadius: "10px 10px 0 0",
+              fontSize: 12,
+            }}
+            onClick={switchMode}
+          >
+            Additional Info
+          </Button>
+        </div>
+      ) : (
+        <div>
+          <Button
+            variant="contained"
+            className={classes.changeButton}
+            style={{
+              backgroundColor: "white",
+              color: "#2975D9",
+              borderRadius: "10px 10px 0 0",
+              marginRight: 5,
+              fontSize: 12,
+            }}
+            onClick={switchMode}
+          >
+            Main Info
+          </Button>
+          <Button
+            variant="contained"
+            className={classes.changeButton}
+            disabled
+            style={{
+              backgroundColor: "#2975D9",
+              color: "white",
+              borderRadius: "10px 10px 0 0",
+              fontSize: 12,
+            }}
+            onClick={switchMode}
+          >
+            Additional Info
+          </Button>
+        </div>
+      )}
+
       {mainInfo ? (
         <div>
           <DataTable
