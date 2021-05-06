@@ -1,17 +1,15 @@
 import React from "react";
-import {
-  Typography,
-  InputBase,
-  Button,
-  Grid,
-  NativeSelect,
-} from "@material-ui/core";
+import { Typography, InputBase, Button } from "@material-ui/core";
 import SearchIcon from "../../assets/icons/Icon feather-search.svg";
 import FilterIcon from "../../assets/icons/Icon awesome-filter.svg";
 import monthsArray from "./Months";
 import daysArray from "./Days";
 import yearsArray from "./Years";
 import styles from "./Header.module.css";
+import Select from "react-select";
+import SelectStyleDays from "./SelectStyles/CustomSelectStyleDays";
+import SelectStyleMonths from "./SelectStyles/CustomSelectStyleMonths";
+import SelectStyleYears from "./SelectStyles/CustomSelectStyleYears";
 
 const TableHeader = () => {
   return (
@@ -28,11 +26,11 @@ const TableHeader = () => {
             <InputBase
               placeholder="Search...."
               inputProps={{ "aria-label": "search" }}
-              className={styles.inputBase}
             />
             <Typography
-              style={{ color: "#3F63F5", fontSize: "20px" }}
+              style={{ color: "#3F63F5" }}
               align="right"
+              variant="body2"
             >
               - No.SR
             </Typography>
@@ -40,99 +38,47 @@ const TableHeader = () => {
               <img src={FilterIcon} alt="Filter Icon" />
             </Button>
           </div>
-
           <div className={styles.date}>
-            <div className={styles.borderBox}>
-              <NativeSelect defaultValue="">
-                {daysArray.map((day, i) => (
-                  <option value={day} key={i}>
-                    {day}
-                  </option>
-                ))}
-              </NativeSelect>
+            <div>
+              <Select
+                styles={SelectStyleDays}
+                options={daysArray}
+                defaultValue={{ label: 1, value: 1 }}
+              />
             </div>
-            <div className={styles.borderBox}>
-              <NativeSelect defaultValue="">
-                {monthsArray.map((month, i) => (
-                  <option value={month} key={i}>
-                    {month}
-                  </option>
-                ))}
-              </NativeSelect>
+            <div>
+              <Select
+                styles={SelectStyleMonths}
+                options={monthsArray}
+                defaultValue={monthsArray[0]}
+                autoSize={false}
+              />
             </div>
-            <div className={styles.borderBox}>
-              <NativeSelect defaultValue="">
-                {yearsArray.map((year, i) => (
-                  <option value={year} key={i}>
-                    {year}
-                  </option>
-                ))}
-              </NativeSelect>
+            <div>
+              <Select
+                styles={SelectStyleYears}
+                options={yearsArray}
+                defaultValue={yearsArray[0]}
+              />
             </div>
           </div>
         </div>
       </div>
-      <Grid
-        container
-        direction="row"
-        justify="space-between"
-        alignItems="center"
-        className={styles.gridContainer}
-      >
-        <Grid
-          item
-          xs={12}
-          md={3}
-          sm={5}
-          align="center"
-          className={styles.gridItem}
-        >
-          <Typography style={{ fontSize: "25px" }}>This month :</Typography>
-          <Typography
-            style={{
-              fontSize: "25px",
-              color: "#3F63F5",
-              fontWeight: "bolder",
-              margin: "0px 25px",
-            }}
-          >
-            20
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={3}
-          sm={5}
-          align="center"
-          className={styles.gridItem}
-        >
-          <Typography style={{ fontSize: "25px" }}>On Progress:</Typography>
-          <Typography
-            style={{
-              fontSize: "25px",
-              color: "#FFA31A",
-              fontWeight: "bolder",
-              margin: "0px 25px",
-            }}
-          >
-            20
-          </Typography>
-        </Grid>
-        <Grid item xs={12} md={3} sm={5} className={styles.gridItem}>
-          <Typography style={{ fontSize: "25px" }}>Approved :</Typography>
-          <Typography
-            style={{
-              fontSize: "25px",
-              color: "#00AF9E",
-              fontWeight: "bolder",
-              margin: "0px 25px",
-            }}
-          >
-            20
-          </Typography>
-        </Grid>
-      </Grid>
+      <div className={styles.divider} />
+      <div className={styles.menu2}>
+        <div className={styles.subMenu2}>
+          <span>This Month:</span>
+          <span className={styles.valueThisMonth}>20</span>
+        </div>
+        <div className={styles.subMenu2}>
+          <span>On Progress:</span>
+          <span className={styles.valueOnProgress}>20</span>
+        </div>
+        <div className={styles.subMenu2}>
+          <span>Approved:</span>
+          <span className={styles.valueApproved}>20</span>
+        </div>
+      </div>
     </div>
   );
 };

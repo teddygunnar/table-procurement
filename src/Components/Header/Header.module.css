@@ -14,6 +14,7 @@
 .contHeaderRight {
   display: flex;
   flex-direction: row;
+  height: 38px;
 }
 
 .searchIcon {
@@ -28,8 +29,9 @@
   align-items: center !important;
   flex-direction: row !important;
   position: relative !important;
-  border-radius: 8px !important;
+  border-radius: 3px !important;
   background-color: #fff !important;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .inputBase {
@@ -51,7 +53,7 @@
   box-shadow: 3px 3px 10px #00000029;
   border-radius: 7px;
   padding: 20px 25px;
-  margin: 0 0 0px 10px;
+  margin-left: 10px;
 }
 
 .gridContainer {
@@ -72,4 +74,40 @@
   background-color: #fff;
   box-shadow: 2px 2px 8px #00000029;
   border-radius: 15px;
+}
+
+.menu2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.subMenu2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 31%;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.subMenu2 span {
+  margin: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #1d3557;
+}
+
+.valueThisMonth {
+  color: #3f63f5 !important;
+}
+.valueOnProgress {
+  color: #ffa31a !important;
+}
+.valueApproved {
+  color: #00af9e !important;
 }
