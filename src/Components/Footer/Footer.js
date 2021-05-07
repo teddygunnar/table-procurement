@@ -6,12 +6,15 @@ import Close from "@material-ui/icons/Close";
 import Check from "@material-ui/icons/Check";
 import MoreHoriz from "@material-ui/icons/MoreHoriz";
 import useStyles from "./styles";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const classes = useStyles();
   return (
     <div className={classes.menuFooter}>
       <Button
+        component={Link}
+        to="/form"
         className={classes.menuFooterButton}
         variant="contained"
         style={{

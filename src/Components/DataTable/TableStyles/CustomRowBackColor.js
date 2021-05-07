@@ -2,19 +2,31 @@ const customRowBackColor = [
   {
     when: (row) => row.Appr === "A",
     style: {
-      backgroundColor: "#D8F2F0",
+      backgroundColor: "#CAFF95",
     },
   },
   {
     when: (row) => row.Appr === "R",
     style: {
-      backgroundColor: "#FBE0E2",
+      backgroundColor: "#FFB3B3",
     },
   },
   {
     when: (row) => row.Appr === "C",
     style: {
       backgroundColor: "#FFF0DC",
+    },
+  },
+  {
+    when: (row) => row.Appr === "",
+    style: {
+      backgroundColor: "#808080",
+    },
+  },
+  {
+    when: (row) => row.Actv === 0,
+    style: {
+      backgroundColor: "#808080",
     },
   },
 ];
